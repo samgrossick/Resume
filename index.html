@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Vertical navigation dots - fullPage.js</title>
+  <meta name="author" content="Alvaro Trigo Lopez" />
+  <meta name="description" content="fullPage full-screen navigation and sections control menu." />
+  <meta name="Resource-type" content="Document" />
+
+
+  <link rel="stylesheet" type="text/css" href="dist/fullpage.css" />
+  <link rel="stylesheet" type="text/css" href="examples.css" />
+
+   <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+  <style>
+
+  /* Style for our header texts
+  * --------------------------------------- */
+  h1{
+    font-size: 5em;
+    font-family: arial,helvetica;
+    color: #fff;
+    margin:0;
+  }
+  .intro p{
+    color: #fff;
+  }
+
+  /* Centered texts in each section
+  * --------------------------------------- */
+  .section{
+    text-align:center;
+  }
+
+  /* Overwriting styles for control arrows for slides
+  * --------------------------------------- */
+
+  /* Bottom menu
+  * --------------------------------------- */
+  #infoMenu li a {
+    color: #fff;
+  }
+  </style>
+
+  <!--[if IE]>
+    <script type="text/javascript">
+       var console = { log: function() {} };
+    </script>
+  <![endif]-->
+</head>
+<body>
+
+<div id="fullpage">
+  <div class="section " id="section0">
+    <div class="intro">
+      <img class="img-fluid img-profile rounded-circle mx-auto mb-2"  style="height: 200px" src="assets/img/profile.jpg" alt="" />
+       <h1 class="mb-0">Sam <span class="text-primary">Grossick</span></h1>
+                    <div class="subheading mb-5">29/16 Springwell Place · Edinburgh, EH11 2HX · <a href="mailto:email@samgrossick.co.uk">email@samgrossick.co.uk</a></div>
+                    <p class="lead mb-5">I am a Heriot-Watt Computer Systems (BSc Hons) student due to graduate in 2020. I have strong skills and knowledge in software development, networking and project management. Experienced with a wide range of programming languages, operating systems and environments.</p>
+                    <div class="social-icons">
+                        <a class="social-icon" href="https://www.linkedin.com/in/samgrossick"><i class="fab fa-linkedin-in"></i></a><a class="social-icon" href="#"><i class="fab fa-github"></i></a><a class="social-icon" href="#"><i class="fab fa-twitter"></i></a><a class="social-icon" href="#"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>    
+              </div>
+  <div class="section" id="section1">
+      <div class="intro">
+        <h2 class="mb-5">Projects</h2>
+                    <div class=" flex-md-row justify-content-between mb-5">
+                        <div class="flex-grow-1">
+                            <h3 class="text-center">Security, Trust & Online Transaction Research</h3>
+                            <div class="subheading mb-3">Dissertation Project</div>
+                            <p>My final year research project aims to provide insight into the trust users have when carrying out online transactions be that either E- commerce or internet banking. As part of this project I am devel- oping an interactive website to test the effects of certain design and implementation decisions on user trust levels. This has in- volved utilising HTML, CSS, PHP and openssl on the technical as- pects of the project and analysing user responses for quantitive and qualititive data.</p>
+                        </div>
+                        <div class="flex-shrink-0"><span class="text-primary">2019-2020</span></div>
+                    </div>
+                   <div class=" flex-md-row justify-content-between mb-5">
+                        <div class="flex-grow-1">
+                            <h3 class="mb-0">Restaurant Ordering System</h3>
+                            <div class="subheading mb-3">3rd Year Coursework</div>
+                            <p>This project was a group effort aimed at creating three distinct but codependent systems that interact. A customer front end to order and monitor progress of food, a kitchen application to prepare the food to order and an application for waiting staff to take orders and deliver food to tables. This was implemented using a combination of HTML, CSS and PHP using the bootstrap library as well as an SQL back end for securely storing logins and order information.</p>
+                        </div>
+                        <div class="flex-shrink-0"><span class="text-primary">2017-2018</span></div>
+                    </div>
+
+      
+    </div>
+
+  </div>
+  <div class="section" id="section2">
+    <div class="intro">
+      <h1>Lorem Ipsum</h1>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript" src="dist/fullpage.js"></script>
+<script type="text/javascript">
+    var myFullpage = new fullpage('#fullpage', {
+        anchors: ['firstPage', 'secondPage', '3rdPage'],
+        sectionsColor: ['#31393C', '#E84855', '#F9DC5C'],
+        navigation: true,
+        navigationPosition: 'left',
+        navigationTooltips: ['First page', 'Second page', 'Third and last page']
+    });
+</script>
+
+</body>
+</html>
