@@ -3,15 +3,20 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <title>Vertical navigation dots - fullPage.js</title>
-  <meta name="author" content="Alvaro Trigo Lopez" />
+  <title>Sam Grossick</title>
+  <meta name="author" content="Sam Grossick" />
   <meta name="description" content="fullPage full-screen navigation and sections control menu." />
   <meta name="Resource-type" content="Document" />
-
-
   <link rel="stylesheet" type="text/css" href="dist/fullpage.css" />
-  <link rel="stylesheet" type="text/css" href="examples.css" />
-
+  <link rel="stylesheet" type="text/css" href="css/slidestyle.css" />
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script>
+$(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip();   
+});
+</script>
    <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
         <!-- Google fonts-->
         <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
@@ -64,12 +69,13 @@
                     <div class="subheading mb-5">29/16 Springwell Place · Edinburgh, EH11 2HX · <a href="mailto:email@samgrossick.co.uk">email@samgrossick.co.uk</a></div>
                     <p class="lead mb-5">I am a Heriot-Watt Computer Systems (BSc Hons) student due to graduate in 2020. I have strong skills and knowledge in software development, networking and project management. Experienced with a wide range of programming languages, operating systems and environments.</p>
                     <div class="social-icons">
-                        <a class="social-icon" href="https://www.linkedin.com/in/samgrossick"><i class="fab fa-linkedin-in"></i></a><a class="social-icon" href="#"><i class="fab fa-github"></i></a><a class="social-icon" href="#"><i class="fab fa-twitter"></i></a><a class="social-icon" href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a class="social-icon" href="https://www.linkedin.com/in/samgrossick" data-toggle="tooltip" title="Linkedin"><i class="fab fa-linkedin-in"></i></a><a class="social-icon" href="https://github.com/samgrossick" data-toggle="tooltip" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:email@samgrossick.co.uk" data-toggle="tooltip" title="Email"><i class="far fa-envelope"></i></a>
                     </div>
                 </div>    
               </div>
   <div class="section" id="section1">
       <div class="intro">
+        <div class ="slide">
         <h2 class="mb-5">Projects</h2>
                     <div class=" flex-md-row justify-content-between mb-5">
                         <div class="flex-grow-1">
@@ -81,21 +87,47 @@
                     </div>
                    <div class=" flex-md-row justify-content-between mb-5">
                         <div class="flex-grow-1">
+                            <h3 class="mb-0">Movie E-Commerce Platform</h3>
+                            <div class="subheading mb-3">4th Year Coursework</div>
+                            <p>A website created to provide users an easy way to access and purchase their favourite films. Built in PHP, mySQL and Javascript, integrating Paypal secure payment and TMDB API to create a custom user experience for every customer. Code available on Github.</p>
+                        </div>
+                        <div class="flex-shrink-0"><span class="text-primary">2019-2020</span></div>
+                    </div>
+
+      
+    </div>
+  </div>
+  <div class ="slide">
+     <div class=" flex-md-row justify-content-between mb-5">
+                        <div class="flex-grow-1">
                             <h3 class="mb-0">Restaurant Ordering System</h3>
                             <div class="subheading mb-3">3rd Year Coursework</div>
                             <p>This project was a group effort aimed at creating three distinct but codependent systems that interact. A customer front end to order and monitor progress of food, a kitchen application to prepare the food to order and an application for waiting staff to take orders and deliver food to tables. This was implemented using a combination of HTML, CSS and PHP using the bootstrap library as well as an SQL back end for securely storing logins and order information.</p>
                         </div>
                         <div class="flex-shrink-0"><span class="text-primary">2017-2018</span></div>
-                    </div>
-
-      
-    </div>
+  </div>
 
   </div>
+</div>
   <div class="section" id="section2">
     <div class="intro">
-      <h1>Lorem Ipsum</h1>
-    </div>
+       <h2 class="mb-5">Skills</h2>
+       <p>Knowledgeable in both software development and IT Service Operation. Strong Communciation skills.
+                    <div class="subheading mb-3">Programming Languages</div>
+                    <ul class="list-inline dev-icons">
+                        <li class="list-inline-item"><i class="fab fa-html5"></i></li>
+                        <li class="list-inline-item"><i class="fab fa-css3-alt"></i></li>
+                        <li class="list-inline-item"><i class="fab fa-js-square"></i></li>
+                        <li class="list-inline-item"><i class="fab fa-php"></i></li>
+                        <li class="list-inline-item"><i class="fab fa-java"></i></li>
+                        <li class="list-inline-item"><i class="fab fa-python"></i></li>
+                    </ul>
+                     <div class="subheading mb-3">Operating Systems</div>
+                    <ul class="list-inline dev-icons">
+                       <li class="list-inline-item"><i class="fab fa-windows"></i></li>
+                        <li class="list-inline-item"><i class="fab fa-apple"></i></li>
+                        <li class="list-inline-item"><i class="fab fa-linux"></i></li>
+                    </ul>
   </div>
 </div>
 
@@ -103,12 +135,16 @@
 <script type="text/javascript">
     var myFullpage = new fullpage('#fullpage', {
         anchors: ['firstPage', 'secondPage', '3rdPage'],
-        sectionsColor: ['#31393C', '#E84855', '#F9DC5C'],
+        sectionsColor: ['#31393C', '#E84855', '#FF6F59'],
         navigation: true,
         navigationPosition: 'left',
         navigationTooltips: ['First page', 'Second page', 'Third and last page']
+
+
     });
+
 </script>
+
 
 </body>
 </html>
