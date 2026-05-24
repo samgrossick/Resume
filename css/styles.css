@@ -214,6 +214,37 @@ h3 {
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
+#featured {
+    background: var(--white-color);
+}
+
+.featured-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    align-items: stretch; /* Forces all cards in a row to match the height of the tallest one */
+}
+
+.linkedin-embed-wrapper {
+    background: var(--white-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    overflow: hidden;
+    max-width: 100%;
+    flex: 1 1 300px; /* Allows cards to shrink/grow to fit in a row */
+    min-width: 250px; /* Prevents them from getting too narrow */
+    display: flex; /* Ensures the wrapper behaves as a flex container */
+    flex-direction: column;
+}
+
+.linkedin-embed-wrapper iframe {
+    display: block;
+    width: 100%; /* Changed from max-width to width to ensure filling */
+    max-width: 100%;
+    /* Height removed to allow iframe to use its HTML attribute height */
+}
+
 #certifications {
     background: var(--white-color);
 }
@@ -246,7 +277,7 @@ h3 {
 
 #contact {
     text-align: center;
-    background: var(--white-color);
+    background: var(--background-color); /* Changed to gray for contrast with Featured section */
 }
 
 .btn {
@@ -258,8 +289,8 @@ h3 {
   border-radius: 5px;
   font-weight: 600;
   transition: background-color 0.3s ease;
-  font-size: 1.5rem; /* Add this line */
-  line-height: 1;    /* Add this line */
+  font-size: 1.5rem;
+  line-height: 1;
 }
 
 .btn svg {
