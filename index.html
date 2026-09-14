@@ -3,89 +3,194 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sam Grossick | Head of Cloud Operations</title>
+    <meta name="color-scheme" content="dark">
+    <meta name="theme-color" content="#09090b">
+    <meta name="description" content="Sam Grossick, Head of Cloud Operations at Leonardo UK. CISSP and TOGAF-certified technologist engineering secure cloud platforms, zero trust architecture, and enterprise architecture.">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Sam Grossick | Cloud Engineering & Enterprise Architecture">
+    <meta property="og:description" content="Head of Cloud Operations at Leonardo UK. CISSP and TOGAF-certified technologist specializing in cloud engineering, zero trust architecture, and IDAM.">
+    <meta property="og:image" content="https://samgrossick.co.uk/assets/img/preview.jpg">
+    <meta property="og:url" content="https://samgrossick.co.uk/">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
+
+    <title>Sam Grossick | Cloud Engineering & Enterprise Architecture</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
-        
+        @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+
+        :root { color-scheme: dark; }
+
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #0f172a; /* slate-900 */
-            color: #f8fafc; /* slate-50 */
+            font-family: 'Manrope', sans-serif;
+            background-color: #09090b; /* zinc-950, off-black */
+            color: #fafafa; /* zinc-50 */
         }
-        
-        /* Subtle grid background for modern tech feel */
+
+        h1, h2, h3, .font-display {
+            font-family: 'Manrope', sans-serif;
+            letter-spacing: -0.02em;
+        }
+
+        /* Faint precision grid backdrop */
         .bg-grid {
-            background-size: 40px 40px;
-            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-                              linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 44px 44px;
+            background-image: linear-gradient(to right, rgba(250, 250, 250, 0.045) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(250, 250, 250, 0.045) 1px, transparent 1px);
         }
 
-        .fade-in {
+        /* Scroll progress bar */
+        #scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            width: 0%;
+            background: #10b981;
+            z-index: 60;
+            pointer-events: none;
+        }
+
+        /* Organic blob behind the hero portrait */
+        .hero-blob {
+            border-radius: 62% 38% 55% 45% / 48% 45% 55% 52%;
+            animation: blobMorph 12s ease-in-out infinite;
+        }
+        @keyframes blobMorph {
+            0%, 100% { border-radius: 62% 38% 55% 45% / 48% 45% 55% 52%; transform: rotate(0deg) scale(1); }
+            50% { border-radius: 45% 55% 40% 60% / 55% 40% 60% 45%; transform: rotate(6deg) scale(1.04); }
+        }
+        .hero-float {
+            animation: heroFloat 6s ease-in-out infinite;
+        }
+        @keyframes heroFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Cursor-tracking highlight on cards */
+        .spotlight-card {
+            position: relative;
+            isolation: isolate;
+        }
+        .spotlight-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            background: radial-gradient(480px circle at var(--x, 50%) var(--y, 50%), rgba(16, 185, 129, 0.14), transparent 65%);
             opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            transition: opacity 0.35s ease;
+            pointer-events: none;
+            z-index: -1;
+        }
+        .spotlight-card:hover::before { opacity: 1; }
+
+        /* Nav link underline */
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -4px;
+            width: 100%;
+            height: 2px;
+            background: #10b981;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+        }
+        .nav-link:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
         }
 
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
         }
     </style>
 </head>
-<body class="antialiased selection:bg-blue-500 selection:text-white">
+<body class="antialiased selection:bg-emerald-500/30 selection:text-emerald-100">
+
+    <div id="scroll-progress"></div>
 
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-slate-900/80 backdrop-blur-md border-b border-slate-800">
+    <nav class="fixed w-full z-50 bg-zinc-950/85 backdrop-blur-md border-b border-zinc-800">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
-                <div class="flex-shrink-0 font-bold text-xl tracking-tight text-blue-400">
-                    SG.
-                </div>
+                <a href="#about" class="flex items-center gap-2">
+                    <span class="w-8 h-8 rounded-lg bg-zinc-50 text-zinc-900 flex items-center justify-center font-extrabold text-sm">SG</span>
+                </a>
                 <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-8">
-                        <a href="#about" class="hover:text-blue-400 transition-colors px-3 py-2 rounded-md text-sm font-medium">About</a>
-                        <a href="#expertise" class="hover:text-blue-400 transition-colors px-3 py-2 rounded-md text-sm font-medium">Expertise</a>
-                        <a href="#experience" class="hover:text-blue-400 transition-colors px-3 py-2 rounded-md text-sm font-medium">Experience</a>
+                    <div class="flex items-baseline space-x-8">
+                        <a href="#about" class="nav-link text-zinc-400 hover:text-white transition-colors text-sm font-semibold">About</a>
+                        <a href="#expertise" class="nav-link text-zinc-400 hover:text-white transition-colors text-sm font-semibold">Expertise</a>
+                        <a href="#experience" class="nav-link text-zinc-400 hover:text-white transition-colors text-sm font-semibold">Experience</a>
+                        <a href="#certifications" class="nav-link text-zinc-400 hover:text-white transition-colors text-sm font-semibold">Certifications</a>
                     </div>
+                </div>
+                <button id="menu-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false" class="md:hidden inline-flex items-center justify-center w-9 h-9 rounded-lg border border-zinc-800 text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-400 transition-colors">
+                    <i data-lucide="menu" id="menu-icon-open" class="w-5 h-5"></i>
+                    <i data-lucide="x" id="menu-icon-close" class="w-5 h-5 hidden"></i>
+                </button>
+            </div>
+            <div id="mobile-menu" class="hidden md:hidden pb-4">
+                <div class="flex flex-col space-y-1">
+                    <a href="#about" class="mobile-link px-2 py-2 rounded-lg text-zinc-300 hover:text-emerald-400 hover:bg-zinc-900 transition-colors text-sm font-semibold">About</a>
+                    <a href="#expertise" class="mobile-link px-2 py-2 rounded-lg text-zinc-300 hover:text-emerald-400 hover:bg-zinc-900 transition-colors text-sm font-semibold">Expertise</a>
+                    <a href="#experience" class="mobile-link px-2 py-2 rounded-lg text-zinc-300 hover:text-emerald-400 hover:bg-zinc-900 transition-colors text-sm font-semibold">Experience</a>
+                    <a href="#certifications" class="mobile-link px-2 py-2 rounded-lg text-zinc-300 hover:text-emerald-400 hover:bg-zinc-900 transition-colors text-sm font-semibold">Certifications</a>
                 </div>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="about" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-grid">
-        <div class="absolute inset-0 bg-slate-900/80 pointer-events-none"></div>
-        <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 fade-in">
-            <div class="flex flex-col md:flex-row items-center justify-between gap-12">
-                <div class="md:w-3/5 text-center md:text-left">
-                    <a href="https://www.credly.com/badges/289ffaad-7abd-4a4e-9627-d62fa5fae32e/linked_in_profile" target="_blank" class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 hover:bg-blue-500/20 text-blue-400 text-sm font-semibold mb-6 border border-blue-500/20 transition-colors">
-                        <i data-lucide="shield-check" class="w-4 h-4"></i>
-                        CISSP Certified Professional
-                    </a>
-                    <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6">
-                        Sam <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">Grossick</span>
+    <section id="about" class="relative pt-24 pb-20 lg:pb-28 overflow-hidden bg-grid">
+        <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-3/5 text-center md:text-left" id="hero-copy">
+                    <div class="flex flex-wrap justify-center md:justify-start gap-3 mb-6 hero-item">
+                        <a href="https://www.credly.com/badges/289ffaad-7abd-4a4e-9627-d62fa5fae32e/linked_in_profile" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 text-sm font-semibold border border-emerald-500/25 transition-colors">
+                            <i data-lucide="shield-check" class="w-4 h-4"></i>
+                            CISSP Certified
+                        </a>
+                        <a href="certs/TOGAF-Practitioner-Grossick.pdf" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-zinc-800/60 hover:bg-zinc-800 text-zinc-200 text-sm font-semibold border border-zinc-700 transition-colors">
+                            <i data-lucide="compass" class="w-4 h-4"></i>
+                            TOGAF Practitioner
+                        </a>
+                    </div>
+                    <h1 class="hero-item text-5xl md:text-7xl font-extrabold tracking-tight mb-6 leading-[1.05] text-white">
+                        Sam <span class="text-emerald-400">Grossick</span>
                     </h1>
-                    <p class="mt-4 text-xl md:text-2xl text-slate-300 font-light">
-                        Head of Cloud Operations @ Leonardo UK
+                    <p class="hero-item mt-4 text-lg md:text-xl text-zinc-400 max-w-2xl mx-auto md:mx-0 leading-relaxed">
+                        Head of Cloud Operations at Leonardo UK, engineering secure, zero-trust cloud platforms and enterprise architecture for critical national infrastructure.
                     </p>
-                    <p class="mt-4 text-lg text-slate-400 max-w-2xl mx-auto md:mx-0">
-                        Strategic IT leader architecting and operating secure, scalable enterprise environments. Specializing in Cloud Infrastructure, Zero Trust Architecture, and Identity & Access Management (IDAM).
-                    </p>
-                    <div class="mt-10 flex justify-center md:justify-start gap-4">
-                        <a href="#experience" class="bg-blue-600 hover:bg-blue-500 text-white px-6 py-3 rounded-lg font-medium transition-colors flex items-center gap-2">
+                    <div class="hero-item mt-10 flex flex-wrap justify-center md:justify-start gap-4">
+                        <a href="#experience" class="magnetic bg-zinc-50 hover:bg-white text-zinc-900 px-6 py-3 rounded-full font-semibold transition-colors flex items-center gap-2">
                             View Experience <i data-lucide="arrow-down" class="w-4 h-4"></i>
                         </a>
-                        <a href="https://www.linkedin.com/in/samgrossick/" target="_blank" class="bg-slate-800 hover:bg-slate-700 text-white px-6 py-3 rounded-lg font-medium transition-colors border border-slate-700 flex items-center gap-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg> LinkedIn
+                        <a href="https://www.linkedin.com/in/samgrossick/" target="_blank" rel="noopener" class="magnetic bg-zinc-900 hover:bg-zinc-800 text-zinc-100 px-6 py-3 rounded-full font-semibold transition-colors border border-zinc-700 flex items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg> Connect on LinkedIn
                         </a>
                     </div>
                 </div>
-                <div class="md:w-2/5 flex justify-center">
-                    <div class="relative">
-                        <div class="absolute -inset-4 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full blur-xl opacity-30"></div>
-                        <img src="assets/img/profile.jpg" alt="Sam Grossick" class="relative w-64 h-64 md:w-80 md:h-80 object-cover rounded-full border-4 border-slate-800 shadow-2xl">
+                <div class="md:w-2/5 flex justify-center hero-item">
+                    <div class="relative hero-float">
+                        <div class="hero-blob absolute -inset-6 bg-emerald-500 opacity-90"></div>
+                        <img src="assets/img/profile.jpg" alt="Sam Grossick" width="320" height="320" loading="eager" decoding="async" class="relative bg-zinc-800 w-64 h-64 md:w-80 md:h-80 object-cover rounded-full border-4 border-zinc-950 shadow-xl">
                     </div>
                 </div>
             </div>
@@ -93,44 +198,51 @@
     </section>
 
     <!-- Core Expertise -->
-    <section id="expertise" class="py-20 bg-slate-900 border-t border-slate-800">
+    <section id="expertise" class="py-24 bg-zinc-950 border-t border-zinc-800">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="mb-12 fade-in">
+            <div class="mb-12 reveal">
                 <h2 class="text-3xl font-bold text-white mb-2">Core Focus Areas</h2>
-                <div class="w-20 h-1 bg-blue-500 rounded"></div>
+                <div class="w-16 h-1 bg-emerald-500 rounded"></div>
             </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Card 1 -->
-                <div class="bg-slate-800/50 border border-slate-700 p-8 rounded-2xl hover:border-blue-500/50 transition-colors fade-in">
-                    <div class="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center mb-6 text-blue-400">
+
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-6">
+                <div class="reveal spotlight-card md:col-span-3 bg-zinc-900/60 border border-zinc-800 p-8 rounded-2xl hover:bg-zinc-900 hover:border-emerald-500/40 hover:-translate-y-1 transition-all">
+                    <div class="w-12 h-12 bg-emerald-500/10 rounded-xl flex items-center justify-center mb-6 text-emerald-400">
                         <i data-lucide="cloud" class="w-6 h-6"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Cloud Operations</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">
-                        Leading comprehensive cloud strategies, ensuring high availability, scalable infrastructure, and streamlined deployments across enterprise environments.
+                    <h3 class="text-xl font-bold mb-3 font-display text-white">Cloud Engineering & Operations</h3>
+                    <p class="text-zinc-400 text-sm leading-relaxed">
+                        Leading and hands-on engineering of cloud infrastructure at scale, building resilient, highly available platforms and streamlining deployment pipelines across enterprise environments.
                     </p>
                 </div>
 
-                <!-- Card 2 -->
-                <div class="bg-slate-800/50 border border-slate-700 p-8 rounded-2xl hover:border-blue-500/50 transition-colors fade-in" style="transition-delay: 100ms;">
-                    <div class="w-12 h-12 bg-cyan-500/20 rounded-lg flex items-center justify-center mb-6 text-cyan-400">
+                <div class="reveal spotlight-card md:col-span-2 bg-zinc-900/60 border border-zinc-800 p-8 rounded-2xl hover:bg-zinc-900 hover:border-emerald-500/40 hover:-translate-y-1 transition-all">
+                    <div class="w-12 h-12 bg-emerald-500/10 rounded-xl flex items-center justify-center mb-6 text-emerald-400">
                         <i data-lucide="lock" class="w-6 h-6"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Zero Trust Architecture</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">
-                        Implementing "never trust, always verify" principles. Designing network perimeters and micro-segmentation to secure critical assets against modern threats.
+                    <h3 class="text-xl font-bold mb-3 font-display text-white">Zero Trust Architecture</h3>
+                    <p class="text-zinc-400 text-sm leading-relaxed">
+                        Designing zero trust networks with micro-segmentation and continuous verification, hardening critical assets against modern threat actors.
                     </p>
                 </div>
 
-                <!-- Card 3 -->
-                <div class="bg-slate-800/50 border border-slate-700 p-8 rounded-2xl hover:border-blue-500/50 transition-colors fade-in" style="transition-delay: 200ms;">
-                    <div class="w-12 h-12 bg-indigo-500/20 rounded-lg flex items-center justify-center mb-6 text-indigo-400">
+                <div class="reveal spotlight-card md:col-span-2 bg-zinc-900/60 border border-zinc-800 p-8 rounded-2xl hover:bg-zinc-900 hover:border-emerald-500/40 hover:-translate-y-1 transition-all">
+                    <div class="w-12 h-12 bg-emerald-500/10 rounded-xl flex items-center justify-center mb-6 text-emerald-400">
                         <i data-lucide="key" class="w-6 h-6"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">IDAM</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">
-                        Robust Identity and Access Management. Enforcing least privilege, seamless SSO integrations, and lifecycle management for enterprise directories.
+                    <h3 class="text-xl font-bold mb-3 font-display text-white">IDAM</h3>
+                    <p class="text-zinc-400 text-sm leading-relaxed">
+                        Engineering least-privilege access models, SSO integration, and full lifecycle automation across enterprise directories and identity providers.
+                    </p>
+                </div>
+
+                <div class="reveal spotlight-card md:col-span-3 bg-zinc-900/60 border border-zinc-800 p-8 rounded-2xl hover:bg-zinc-900 hover:border-emerald-500/40 hover:-translate-y-1 transition-all">
+                    <div class="w-12 h-12 bg-emerald-500/10 rounded-xl flex items-center justify-center mb-6 text-emerald-400">
+                        <i data-lucide="compass" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 font-display text-white">Enterprise Architecture</h3>
+                    <p class="text-zinc-400 text-sm leading-relaxed">
+                        Applying TOGAF methodology to bridge legacy infrastructure with modern, cloud-native architecture, translating business strategy into secure technical roadmaps.
                     </p>
                 </div>
             </div>
@@ -138,91 +250,95 @@
     </section>
 
     <!-- Experience Timeline -->
-    <section id="experience" class="py-20 bg-slate-950">
+    <section id="experience" class="py-24 bg-zinc-950 border-t border-zinc-800">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="mb-16 fade-in">
+            <div class="mb-16 reveal">
                 <h2 class="text-3xl font-bold text-white mb-2">Professional Experience</h2>
-                <div class="w-20 h-1 bg-blue-500 rounded mb-6"></div>
-                <p class="text-slate-400">Career progression at Leonardo UK, driving architectural evolution and cloud security.</p>
+                <div class="w-16 h-1 bg-emerald-500 rounded mb-6"></div>
+                <p class="text-zinc-400">Career progression at Leonardo UK, driving architectural evolution and cloud security engineering.</p>
             </div>
 
-            <div class="space-y-12 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-700 before:to-transparent">
-                
+            <div id="timeline" class="space-y-12 relative">
+                <div class="absolute inset-y-0 ml-5 -translate-x-px md:mx-auto md:translate-x-0 w-0.5 h-full pointer-events-none">
+                    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-zinc-800 to-transparent"></div>
+                    <div id="timeline-progress" class="absolute inset-x-0 top-0 h-full bg-gradient-to-b from-emerald-400 to-emerald-500/30" style="transform: scaleY(0); transform-origin: top;"></div>
+                </div>
+
                 <!-- Role 1 -->
-                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active fade-in">
-                    <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-slate-900 bg-blue-500 text-slate-900 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
-                        <i data-lucide="briefcase" class="w-4 h-4 text-white"></i>
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group reveal">
+                    <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-zinc-950 bg-emerald-500 text-zinc-950 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                        <i data-lucide="briefcase" class="w-4 h-4"></i>
                     </div>
-                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-slate-800/50 p-6 rounded-xl border border-slate-700 hover:border-blue-500/50 transition-colors">
+                    <div class="spotlight-card w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-zinc-900/60 p-6 rounded-2xl border border-zinc-800 hover:bg-zinc-900 hover:border-emerald-500/40 transition-all">
                         <div class="flex items-center justify-between mb-2">
-                            <h3 class="font-bold text-lg text-white">Head of Cloud Operations</h3>
+                            <h3 class="font-bold text-lg text-white font-display">Head of Cloud Operations</h3>
                         </div>
-                        <div class="text-blue-400 text-sm font-medium mb-3">Leonardo UK • Jan 2025 - Present</div>
-                        <p class="text-slate-400 text-sm leading-relaxed">
+                        <div class="text-emerald-400 text-xs font-semibold uppercase tracking-wide mb-3">Leonardo UK · Jan 2025 - Present</div>
+                        <p class="text-zinc-400 text-sm leading-relaxed">
                             Leading the cloud operations team. Accountable for the operational stability, security, and strategic scaling of cloud environments. Deep focus on enforcing Zero Trust and standardizing IDAM protocols across the enterprise.
                         </p>
                     </div>
                 </div>
 
                 <!-- Role 2 -->
-                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group fade-in">
-                    <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-slate-900 bg-slate-700 text-slate-300 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group reveal">
+                    <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-zinc-950 bg-zinc-700 text-zinc-200 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
                         <i data-lucide="git-merge" class="w-4 h-4"></i>
                     </div>
-                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-slate-800/30 p-6 rounded-xl border border-slate-800">
+                    <div class="spotlight-card w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-zinc-900/60 p-6 rounded-2xl border border-zinc-800 hover:bg-zinc-900 hover:border-emerald-500/40 transition-all">
                         <div class="flex items-center justify-between mb-2">
-                            <h3 class="font-bold text-lg text-slate-200">Enterprise Architect</h3>
+                            <h3 class="font-bold text-lg text-white font-display">Enterprise Architect</h3>
                         </div>
-                        <div class="text-slate-400 text-sm mb-3">Leonardo UK • Jan 2024 - Jan 2025</div>
-                        <p class="text-slate-400 text-sm leading-relaxed">
-                            Designed high-level IT strategies aligning with business objectives. Architected secure, future-proof systems bridging legacy infrastructure with modern cloud-native solutions. Created core principles on Zero Trust and Modern Identity, successfully introducing Zscaler and Entra.
+                        <div class="text-zinc-500 text-xs font-semibold uppercase tracking-wide mb-3">Leonardo UK · Jan 2024 - Jan 2025</div>
+                        <p class="text-zinc-400 text-sm leading-relaxed">
+                            Designed high-level IT strategies aligning with business objectives. Architected secure, future-proof systems bridging legacy infrastructure with modern cloud-native solutions. Established core principles for Zero Trust and Modern Identity, engineering the rollout of Zscaler and Entra.
                         </p>
                     </div>
                 </div>
 
                 <!-- Role 3 -->
-                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group fade-in">
-                    <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-slate-900 bg-slate-700 text-slate-300 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group reveal">
+                    <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-zinc-950 bg-zinc-700 text-zinc-200 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
                         <i data-lucide="layers" class="w-4 h-4"></i>
                     </div>
-                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-slate-800/30 p-6 rounded-xl border border-slate-800">
+                    <div class="spotlight-card w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-zinc-900/60 p-6 rounded-2xl border border-zinc-800 hover:bg-zinc-900 hover:border-emerald-500/40 transition-all">
                         <div class="flex items-center justify-between mb-2">
-                            <h3 class="font-bold text-lg text-slate-200">IT Solution Architect</h3>
+                            <h3 class="font-bold text-lg text-white font-display">IT Solution Architect</h3>
                         </div>
-                        <div class="text-slate-400 text-sm mb-3">Leonardo UK • Aug 2022 - Jan 2024</div>
-                        <p class="text-slate-400 text-sm leading-relaxed">
-                            Translated business requirements into secure technical architectures. Implemented secure-by-design principles for enterprise IT solutions, and served as the lead architect to deliver a first-of-its-type secure public cloud in defence.
+                        <div class="text-zinc-500 text-xs font-semibold uppercase tracking-wide mb-3">Leonardo UK · Aug 2022 - Jan 2024</div>
+                        <p class="text-zinc-400 text-sm leading-relaxed">
+                            Translated business requirements into secure technical architectures. Implemented secure-by-design principles for enterprise IT solutions, and served as lead architect delivering a first-of-its-type secure public cloud in defence.
                         </p>
                     </div>
                 </div>
 
                 <!-- Role 4 -->
-                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group fade-in">
-                    <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-slate-900 bg-slate-700 text-slate-300 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group reveal">
+                    <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-zinc-950 bg-zinc-700 text-zinc-200 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
                         <i data-lucide="cpu" class="w-4 h-4"></i>
                     </div>
-                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-slate-800/30 p-6 rounded-xl border border-slate-800">
+                    <div class="spotlight-card w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-zinc-900/60 p-6 rounded-2xl border border-zinc-800 hover:bg-zinc-900 hover:border-emerald-500/40 transition-all">
                         <div class="flex items-center justify-between mb-2">
-                            <h3 class="font-bold text-lg text-slate-200">IT Analyst – Future Factory</h3>
+                            <h3 class="font-bold text-lg text-white font-display">IT Analyst - Future Factory</h3>
                         </div>
-                        <div class="text-slate-400 text-sm mb-3">Leonardo UK • Aug 2021 - Aug 2022</div>
-                        <p class="text-slate-400 text-sm leading-relaxed">
+                        <div class="text-zinc-500 text-xs font-semibold uppercase tracking-wide mb-3">Leonardo UK · Aug 2021 - Aug 2022</div>
+                        <p class="text-zinc-400 text-sm leading-relaxed">
                             Contributed to "Future Factory" initiatives, modernizing manufacturing IT processes and laying the groundwork for digital transformation.
                         </p>
                     </div>
                 </div>
 
                 <!-- Role 5 -->
-                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group fade-in">
-                    <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-slate-900 bg-slate-800 text-slate-400 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group reveal">
+                    <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-zinc-950 bg-zinc-800 text-zinc-400 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
                         <i data-lucide="terminal" class="w-4 h-4"></i>
                     </div>
-                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-slate-800/20 p-6 rounded-xl border border-slate-800/50">
+                    <div class="spotlight-card w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-zinc-900/60 p-6 rounded-2xl border border-zinc-800 hover:bg-zinc-900 hover:border-emerald-500/40 transition-all">
                         <div class="flex items-center justify-between mb-2">
-                            <h3 class="font-bold text-lg text-slate-300">Graduate IT Service Ops Analyst</h3>
+                            <h3 class="font-bold text-lg text-white font-display">Graduate IT Service Ops Analyst</h3>
                         </div>
-                        <div class="text-slate-500 text-sm mb-3">Leonardo UK • Aug 2020 - Aug 2021</div>
-                        <p class="text-slate-400 text-sm leading-relaxed">
+                        <div class="text-zinc-600 text-xs font-semibold uppercase tracking-wide mb-3">Leonardo UK · Aug 2020 - Aug 2021</div>
+                        <p class="text-zinc-400 text-sm leading-relaxed">
                             Developed core ITIL knowledge and operational discipline, establishing a strong foundation in enterprise service management.
                         </p>
                     </div>
@@ -232,46 +348,196 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-slate-950 border-t border-slate-900 py-8">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
-            <div class="text-slate-500 text-sm">
-                &copy; <script>document.write(new Date().getFullYear())</script> Sam Grossick. All rights reserved.
+    <!-- Certifications -->
+    <section id="certifications" class="py-24 bg-zinc-950 border-t border-zinc-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-12 reveal">
+                <h2 class="text-3xl font-bold text-white mb-2">Certifications</h2>
+                <div class="w-16 h-1 bg-emerald-500 rounded mb-6"></div>
+                <p class="text-zinc-400">Formal credentials underpinning the architecture, security, and engineering work above.</p>
             </div>
-            <div class="flex gap-4 text-slate-400">
-                <a href="https://www.linkedin.com/in/samgrossick/" target="_blank" class="hover:text-blue-400 transition-colors">
+
+            <!-- Featured credentials -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <a href="https://www.credly.com/badges/289ffaad-7abd-4a4e-9627-d62fa5fae32e/linked_in_profile" target="_blank" rel="noopener" class="reveal spotlight-card group bg-zinc-900/60 border border-zinc-800 hover:bg-zinc-900 hover:border-emerald-500/40 hover:-translate-y-1 p-6 rounded-2xl transition-all flex items-start gap-4">
+                    <div class="w-12 h-12 shrink-0 bg-emerald-500/10 rounded-xl flex items-center justify-center text-emerald-400">
+                        <i data-lucide="shield-check" class="w-6 h-6"></i>
+                    </div>
+                    <div class="min-w-0">
+                        <h3 class="font-bold text-white font-display">CISSP</h3>
+                        <p class="text-xs font-semibold uppercase tracking-wide text-zinc-500 mb-2">ISC2</p>
+                        <p class="text-zinc-400 text-sm leading-relaxed">Certified Information Systems Security Professional, covering security architecture, engineering, and risk management.</p>
+                        <span class="inline-flex items-center gap-1 text-emerald-400 text-sm font-semibold mt-3 group-hover:gap-2 transition-all">View credential <i data-lucide="external-link" class="w-3.5 h-3.5"></i></span>
+                    </div>
+                </a>
+
+                <a href="certs/TOGAF-Practitioner-Grossick.pdf" target="_blank" rel="noopener" class="reveal spotlight-card group bg-zinc-900/60 border border-zinc-800 hover:bg-zinc-900 hover:border-emerald-500/40 hover:-translate-y-1 p-6 rounded-2xl transition-all flex items-start gap-4">
+                    <div class="w-12 h-12 shrink-0 bg-emerald-500/10 rounded-xl flex items-center justify-center text-emerald-400">
+                        <i data-lucide="compass" class="w-6 h-6"></i>
+                    </div>
+                    <div class="min-w-0">
+                        <h3 class="font-bold text-white font-display">TOGAF Enterprise Architecture Practitioner</h3>
+                        <p class="text-xs font-semibold uppercase tracking-wide text-zinc-500 mb-2">The Open Group</p>
+                        <p class="text-zinc-400 text-sm leading-relaxed">Practitioner-level accreditation in the TOGAF standard for enterprise architecture development and governance.</p>
+                        <span class="inline-flex items-center gap-1 text-emerald-400 text-sm font-semibold mt-3 group-hover:gap-2 transition-all">View certificate <i data-lucide="external-link" class="w-3.5 h-3.5"></i></span>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Additional credential -->
+            <div class="reveal flex justify-center">
+                <a href="certs/ITIL-Foundation-Grossick.pdf" target="_blank" rel="noopener" class="spotlight-card group inline-flex items-center gap-3 bg-zinc-900/60 border border-zinc-800 hover:bg-zinc-900 hover:border-emerald-500/40 px-5 py-4 rounded-xl transition-all">
+                    <i data-lucide="clipboard-check" class="w-5 h-5 text-emerald-400"></i>
+                    <div class="text-left">
+                        <h3 class="font-semibold text-sm text-white leading-snug">ITIL Foundation</h3>
+                        <p class="text-[11px] font-semibold uppercase tracking-wide text-zinc-500">AXELOS / PeopleCert</p>
+                    </div>
+                    <i data-lucide="external-link" class="w-3.5 h-3.5 text-zinc-500 group-hover:text-emerald-400 transition-colors"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Closing CTA -->
+    <section class="relative overflow-hidden bg-emerald-600 py-16">
+        <div class="absolute inset-0 bg-grid opacity-[0.12]"></div>
+        <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal">
+            <h2 class="text-2xl md:text-3xl font-bold text-white mb-3">Let's build something secure together.</h2>
+            <p class="text-emerald-50 mb-8 max-w-xl mx-auto">Open to conversations on cloud strategy, zero trust, and enterprise architecture.</p>
+            <a href="https://www.linkedin.com/in/samgrossick/" target="_blank" rel="noopener" class="magnetic inline-flex items-center gap-2 bg-zinc-950 hover:bg-zinc-900 text-white px-6 py-3 rounded-full font-semibold transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                Connect on LinkedIn
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-zinc-950 border-t border-zinc-800 py-8">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="text-zinc-500 text-sm">
+                &copy; <span id="footer-year"></span> Sam Grossick. All rights reserved.
+            </div>
+            <div class="flex gap-4 text-zinc-500">
+                <a href="https://www.linkedin.com/in/samgrossick/" target="_blank" rel="noopener" class="hover:text-emerald-400 transition-colors">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg>
                 </a>
-                <!-- Add mailto or other links here if needed -->
             </div>
         </div>
     </footer>
 
-    <!-- Initialize Icons & Animations -->
     <script>
-        // Initialize Lucide icons
-        lucide.createIcons();
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-        // Simple Intersection Observer for fade-in animations
+        lucide.createIcons({ attrs: { 'stroke-width': 1.75 } });
+        document.getElementById('footer-year').textContent = new Date().getFullYear();
+
         document.addEventListener("DOMContentLoaded", () => {
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.15
+
+            // Mobile nav toggle
+            const menuToggle = document.getElementById('menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const iconOpen = document.getElementById('menu-icon-open');
+            const iconClose = document.getElementById('menu-icon-close');
+
+            const setMenuState = (open) => {
+                mobileMenu.classList.toggle('hidden', !open);
+                iconOpen.classList.toggle('hidden', open);
+                iconClose.classList.toggle('hidden', !open);
+                menuToggle.setAttribute('aria-expanded', String(open));
             };
 
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        observer.unobserve(entry.target); // Run once
-                    }
-                });
-            }, observerOptions);
-
-            document.querySelectorAll('.fade-in').forEach(el => {
-                observer.observe(el);
+            menuToggle.addEventListener('click', () => {
+                setMenuState(mobileMenu.classList.contains('hidden'));
             });
+
+            document.querySelectorAll('.mobile-link').forEach(link => {
+                link.addEventListener('click', () => setMenuState(false));
+            });
+
+            // Scroll progress bar (rAF-batched, no per-frame layout thrash)
+            const progressBar = document.getElementById('scroll-progress');
+            let ticking = false;
+            const updateProgress = () => {
+                const scrollTop = window.scrollY;
+                const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+                progressBar.style.width = pct + '%';
+                ticking = false;
+            };
+            window.addEventListener('scroll', () => {
+                if (!ticking) {
+                    requestAnimationFrame(updateProgress);
+                    ticking = true;
+                }
+            }, { passive: true });
+            updateProgress();
+
+            // Cursor-tracking highlight on cards
+            document.querySelectorAll('.spotlight-card').forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    card.style.setProperty('--x', `${e.clientX - rect.left}px`);
+                    card.style.setProperty('--y', `${e.clientY - rect.top}px`);
+                });
+            });
+
+            // Magnetic buttons
+            if (!prefersReducedMotion) {
+                document.querySelectorAll('.magnetic').forEach(btn => {
+                    const strength = 14;
+                    btn.addEventListener('mousemove', (e) => {
+                        const rect = btn.getBoundingClientRect();
+                        const x = (e.clientX - rect.left - rect.width / 2) / rect.width;
+                        const y = (e.clientY - rect.top - rect.height / 2) / rect.height;
+                        btn.style.transform = `translate(${x * strength}px, ${y * strength}px)`;
+                    });
+                    btn.addEventListener('mouseleave', () => {
+                        btn.style.transform = 'translate(0, 0)';
+                    });
+                });
+            }
+
+            // GSAP scroll reveals
+            if (window.gsap && window.ScrollTrigger) {
+                gsap.registerPlugin(ScrollTrigger);
+
+                if (prefersReducedMotion) {
+                    gsap.set('.reveal, .hero-item', { opacity: 1, y: 0 });
+                } else {
+                    gsap.set('.reveal', { opacity: 0, y: 28 });
+                    gsap.utils.toArray('.reveal').forEach((el) => {
+                        gsap.to(el, {
+                            opacity: 1,
+                            y: 0,
+                            duration: 0.7,
+                            ease: 'power3.out',
+                            scrollTrigger: { trigger: el, start: 'top 88%', once: true }
+                        });
+                    });
+
+                    gsap.set('.hero-item', { opacity: 0, y: 20 });
+                    gsap.to('.hero-item', {
+                        opacity: 1,
+                        y: 0,
+                        duration: 0.8,
+                        ease: 'power3.out',
+                        stagger: 0.12,
+                        delay: 0.1
+                    });
+
+                    // Timeline progress line, drawn as the user scrolls the timeline
+                    gsap.to('#timeline-progress', {
+                        scaleY: 1,
+                        ease: 'none',
+                        scrollTrigger: {
+                            trigger: '#timeline',
+                            start: 'top 65%',
+                            end: 'bottom 75%',
+                            scrub: 0.6
+                        }
+                    });
+                }
+            }
         });
     </script>
 </body>
